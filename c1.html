@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>title</title>
+  </head>
+  <h1 style="text-align: center">Graphical Representation</h1>
+  <p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
+  <p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
+  <canvas id="myChart1" width="200px" height="200px" style="padding-left: 0;padding-right: 0;margin-left: auto;margin-right: auto;display: block;"></canvas>
+  <body>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="node_modules/chart.js/dist/Chart.js"></script>
+    <link href="style.css" type="text/css" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <script>
+    var output = [];
+    var entry;
+    $(function() {
+        var sheetURL = 'https://spreadsheets.google.com/feeds/cells/1EMAV9BxUnAs-Jtvn6QsIpkik5LW6odRa8bLyxc4aMlw/1/public/full?alt=json';
+        $.getJSON(sheetURL, function(data) {
+            entry = data.feed.entry;
+            for(i = 0; i < entry.length; i++) {
+                var blaf = entry[i].content.$t;
+                output.push(entry[i].content.$t);
+                lotsofGraphs();
+            }
+        })
+    });
+function lotsofGraphs(){
+    var data1 = [];
+    for(var x = 13; x<26; x++){
+      if(x==16||x==17||x==19||x==21||x==23){
+        var t = parseFloat(output[x]);
+        data1.push(t);
+      }
+    }
+    var ctx1 = document.getElementById('myChart1');
+    var label1 = output[15] + ': #' + output[13] + ' RANKING: ' + output[14] ;
+    var ch1 = new Chart(ctx1, {
+    type: 'line',
+    data: {
+        labels: ['ESPM', 'Auto Low', 'Auto High', 'Teleop Low', 'Teleop High'],
+        datasets: [{
+            label: label1,
+            data: data1,
+            borderColor:'rgba(255, 99, 132, 1)',
+            backgroundColor: 'rgba(255,99,132,0.2)',
+            borderWidth: 1
+        }]
+    },
+    responsive: {
+      maintainAspectRatio: false
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+    });
+    document.getElementById('myChart1').style.height = '800px';
+    document.getElementById('myChart1').style.width = '800px';
+  }
+    </script>
+  </body>
+</html>
