@@ -7,9 +7,9 @@
   <h1 style="text-align: center">Team Stats</h1>
   <p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
   <p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
-  <canvas id="myChart1" width="400" height="400"></canvas>
-  <canvas id="myChart2" width="400" height="400"></canvas>
-  <canvas id="myChart3" width="400" height="400"></canvas>
+  <canvas id="myChart1" width="200px" height="200px" style="padding-left: 0;padding-right: 0;margin-left: auto;margin-right: auto;display: block;"></canvas>
+  <canvas id="myChart2" width="200px" height="200px" style="padding-left: 0;padding-right: 0;margin-left: auto;margin-right: auto;display: block;"></canvas>
+  <canvas id="myChart3" width="200px" height="200px" style="padding-left: 0;padding-right: 0;margin-left: auto;margin-right: auto;display: block;"></canvas>
   <body>
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="node_modules/chart.js/dist/Chart.js"></script>
@@ -25,13 +25,22 @@
             for(i = 0; i < entry.length; i++) {
                 var blaf = entry[i].content.$t;
                 output.push(entry[i].content.$t);
-                doThing();
+                lotsofGraphs();
             }
         })
     });
-function doThing(){
-    var c = 13;
-    var r = 7;
+function lotsofGraphs(){
+  var c = 13;
+  var r = 4;
+  //for(r1 = 1; r1< r+1; r1++){
+    //var data = [];
+    //for(var x = 13*r1; x<2*x; x++){
+      //var t = parseFloat(output[x]);
+      //data.push(t);
+    //}
+    //var numg = r-1;
+
+  //}
     var data1 = [];
     for(var x = 13; x<26; x++){
       if(x==16||x==17||x==19||x==21||x==23){
@@ -71,6 +80,9 @@ function doThing(){
             borderWidth: 1
         }]
     },
+    responsive: {
+      maintainAspectRatio: false
+    },
     options: {
         scales: {
             yAxes: [{
@@ -92,6 +104,9 @@ function doThing(){
             backgroundColor: 'rgba(252, 186, 3,0.2)',
             borderWidth: 1
         }]
+    },
+    responsive: {
+      maintainAspectRatio: false
     },
     options: {
         scales: {
@@ -115,6 +130,9 @@ function doThing(){
             borderWidth: 1
         }]
     },
+    responsive: {
+      maintainAspectRatio: false
+    },
     options: {
         scales: {
             yAxes: [{
@@ -125,6 +143,12 @@ function doThing(){
         }
     }
     });
+    document.getElementById('myChart1').style.height = '800px';
+    document.getElementById('myChart1').style.width = '800px';
+    document.getElementById('myChart2').style.height = '800px';
+    document.getElementById('myChart2').style.width = '800px';
+    document.getElementById('myChart3').style.height = '800px';
+    document.getElementById('myChart3').style.width = '800px';
   }
     </script>
   </body>
