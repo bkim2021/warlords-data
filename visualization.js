@@ -49,6 +49,27 @@ $(function() {
                     output += entry[i].content.$t;
                     output += "</td>";
                 } else {
+                  if(i==15){
+                    output += "<td>";
+                    output += "<a href='c1.html'>";
+                    output += entry[i].content.$t;
+                    output += "</a>";
+                    output += "</td>";
+                  }
+                  if(i==28){
+                    output += "<td>";
+                    output += "<a href='c2.html'>";
+                    output += entry[i].content.$t;
+                    output += "</a>";
+                    output += "</td>";
+                  }
+                  if(i==41){
+                    output += "<td>";
+                    output += "<a href='c3.html'>";
+                    output += entry[i].content.$t;
+                    output += "</a>";
+                    output += "</td>";
+                  }
                     output += "<td>";
                     output += entry[i].content.$t;
                     output += "</td>";
@@ -58,7 +79,7 @@ $(function() {
             console.log("#: " + colCount + " Entry: " + entry[i].content.$t);
         }
         output += "</table>";
-    
+
         document.getElementById("team").innerHTML = output;
 
         console.log(entry);
