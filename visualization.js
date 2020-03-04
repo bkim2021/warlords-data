@@ -3,10 +3,12 @@
 */
 
 //Column arrays
+src="c1.js";
 var col1 = [];
 var col2 = [];
 var col3 = [];
 var col4 = [];
+var g;
 
 var entry;
 
@@ -38,38 +40,39 @@ $(function() {
                 console.log("Row");
                 output += "<tr>";
             }
-
             if(firstTime) {
                 output += "<th>";
                 output += entry[i].content.$t;
                 output += "</th>";
-            } else {
-                if(colCount == 1) {
+            }
+            else {
+              if(i==15){
+                output += "<td>";
+                output += "<a href='c1.html' onclick = 'graphs.graph1()'>";
+                output += entry[i].content.$t;
+                output += "</a>";
+                output += "</td>";
+              }
+              else if(i==28){
+                output += "<td>";
+                output += "<a href='c1.html' onclick = 'graphs.graph2()'>";
+                output += entry[i].content.$t;
+                output += "</a>";
+                output += "</td>";
+              }
+              else if(i==41){
+                output += "<td>";
+                output += "<a href='c1.html' onclick = 'graphs.graph3()'>";
+                output += entry[i].content.$t;
+                output += "</a>";
+                output += "</td>";
+              }
+              else if(colCount == 1) {
                     output += "<td class=\"score\">";
                     output += entry[i].content.$t;
                     output += "</td>";
-                } else {
-                  if(i==15){
-                    output += "<td>";
-                    output += "<a href='c1.html'>";
-                    output += entry[i].content.$t;
-                    output += "</a>";
-                    output += "</td>";
-                  }
-                  if(i==28){
-                    output += "<td>";
-                    output += "<a href='c2.html'>";
-                    output += entry[i].content.$t;
-                    output += "</a>";
-                    output += "</td>";
-                  }
-                  if(i==41){
-                    output += "<td>";
-                    output += "<a href='c3.html'>";
-                    output += entry[i].content.$t;
-                    output += "</a>";
-                    output += "</td>";
-                  }
+                }
+                else {
                     output += "<td>";
                     output += entry[i].content.$t;
                     output += "</td>";
