@@ -48,21 +48,21 @@ $(function() {
             else {
               if(i==15){
                 output += "<td>";
-                output += "<a href='c1.html' onclick = 'graphs.graph1()'>";
+                output += "<a href='c1.html'>";
                 output += entry[i].content.$t;
                 output += "</a>";
                 output += "</td>";
               }
               else if(i==28){
                 output += "<td>";
-                output += "<a href='c1.html' onclick = 'graphs.graph2()'>";
+                output += "<a href='c2.html'>";
                 output += entry[i].content.$t;
                 output += "</a>";
                 output += "</td>";
               }
               else if(i==41){
                 output += "<td>";
-                output += "<a href='c1.html' onclick = 'graphs.graph3()'>";
+                output += "<a href='c3.html'>";
                 output += entry[i].content.$t;
                 output += "</a>";
                 output += "</td>";
