@@ -2,11 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>title</title>
+    <title>Graphical Display</title>
   </head>
-  <h1 style="text-align: center">Team Stats</h1>
-  <p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
-  <p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
+  
   <body>
     <div class="pure-menu-horizontal" style="position: fixed; top:0; z-index: 5; height:50px; background-color: black; color: #FFD900; font-family: 'Oswald'">
       <img style="display:inline-block; vertical-align: top; padding-left: 10px; padding-top: 5px; height: 40px" src="icon-on-black.png">
@@ -14,6 +12,11 @@
 
   <br>
   <br>
+  <div>
+    <h1 style="text-align: center">Team Stats</h1>
+  <p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
+  <p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
+  </div>
     <div class = "container1">
       <div class = "inside">
         <canvas id="myChart1"></canvas>
@@ -160,4 +163,15 @@ function lotsofGraphs(){
   }
     </script>
   </body>
+
+  <style>
+    .container1 {
+      display: flex;
+    }
+
+    .inside {
+      width: 800px;
+      height: 800px;
+    }
+  </style>
 </html>
