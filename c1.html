@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <title>title</title>
   </head>
-  <h1 style="text-align: center">Graphical Representation</h1>
-  <p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
-  <p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
-  <canvas id="myChart1" width="200px" height="200px" style="padding-left: 0;padding-right: 0;margin-left: auto;margin-right: auto;display: block;"></canvas>
+  <<h1 id="title">Warlords Stats</h1>
+  <h3 id="match">Presented by Team 2485</h3>
+<p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
+<p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
+  
   <body>
+    <div id="out">
+      <canvas id="myChart1"></canvas>
+    </div>
+
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="node_modules/chart.js/dist/Chart.js"></script>
     <link href="style.css" type="text/css" rel="stylesheet"/>
@@ -62,9 +67,16 @@ function lotsofGraphs(){
         }
     }
     });
-    document.getElementById('myChart1').style.height = '800px';
-    document.getElementById('myChart1').style.width = '800px';
+    //document.getElementById('myChart1').style.height = '400px';
+    //document.getElementById('myChart1').style.width = '400px';
   }
     </script>
   </body>
+
+  <style>
+    .out {
+      height: 200px;
+      width: 200px;
+    }
+  </style>
 </html>
