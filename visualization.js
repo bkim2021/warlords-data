@@ -2,31 +2,27 @@
 * Author: Brett Kim
 */
 
-//Column arrays
-src="c1.js";
-var col1 = [];
-var col2 = [];
-var col3 = [];
-var col4 = [];
-var g;
-
 var entry;
-
 var TABLE_COLUMNS = 13;
 
 $(function() {
+    //Get the Google Sheets data formatted in JSON
     var sheetURL = 'https://spreadsheets.google.com/feeds/cells/1EMAV9BxUnAs-Jtvn6QsIpkik5LW6odRa8bLyxc4aMlw/1/public/full?alt=json';
 
+    //Parse through the data
     $.getJSON(sheetURL, function(data) {
         entry = data.feed.entry;
 
+        //The variable that will be displayed as HTML on the webpage
         output = "";
 
+        //Create the table displayed on visualization.html
         output += "<table>";
 
         var newTableRow = false;
         var firstTime = true;
 
+        //Parsing through the data from JSON to format it into a table
         var colCount = -1;
         for(i = 0; i < entry.length; i++) {
 
@@ -83,8 +79,10 @@ $(function() {
         }
         output += "</table>";
 
+        //Display the output to the webpage.
         document.getElementById("team").innerHTML = output;
 
+        //Used for debugging purposes solely.
         console.log(entry);
     })
 });

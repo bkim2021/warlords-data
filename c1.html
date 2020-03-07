@@ -2,26 +2,31 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>title</title>
-  </head>
-  <h1 id="title">Warlords Stats</h1>
-  <h3 id="match">Presented by Team 2485</h3>
-<p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
-<p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
-  
-  <body>
-    <div id="out">
-      <canvas id="myChart1"></canvas>
-    </div>
+    <title>Data Visualization</title>
 
+    <!--Scripts and CSS used to generate the page-->
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="node_modules/chart.js/dist/Chart.js"></script>
     <link href="style.css" type="text/css" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+  </head>
+  
+  <body>
+    <h1 id="title">Warlords Stats</h1>
+    <h3 id="match">Presented by Team 2485</h3>
+    <p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
+    <p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
+    
+    <div id="out">
+      <canvas id="myChart1"></canvas>
+    </div>
+    
     <script>
-    var output = [];
-    var entry;
-    $(function() {
+      var output = [];
+      var entry;
+      
+      //Converts the data from JSON to an array of information about the spreadsheet
+      $(function() {
         var sheetURL = 'https://spreadsheets.google.com/feeds/cells/1EMAV9BxUnAs-Jtvn6QsIpkik5LW6odRa8bLyxc4aMlw/1/public/full?alt=json';
         $.getJSON(sheetURL, function(data) {
             entry = data.feed.entry;
@@ -30,48 +35,53 @@
                 lotsofGraphs();
             }
         })
-    });
-function lotsofGraphs(){
-    var data1 = [];
-    for(var x = 13; x<26; x++){
-      if(x==16||x==17||x==19||x==21||x==23){
-        var t = parseFloat(output[x]);
-        data1.push(t);
-      }
-    }
-    var ctx1 = document.getElementById('myChart1');
-    var label1 = output[15] + ': #' + output[13] + ' RANKING: ' + output[14] ;
-    var ch1 = new Chart(ctx1, {
-    type: 'line',
-    data: {
-        labels: ['ESPM', 'Auto Low', 'Auto High', 'Teleop Low', 'Teleop High'],
-        datasets: [{
-            label: label1,
-            data: data1,
-            borderColor:'rgba(0,0,0, 1)',
-            backgroundColor: 'rgba(247, 247, 5,0.2)',
-            borderWidth: 3
-        }]
-    },
-    responsive: {
-      maintainAspectRatio: false
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
-        }
-    }
-    });
-    //document.getElementById('myChart1').style.height = '400px';
-    //document.getElementById('myChart1').style.width = '400px';
-  }
-    </script>
-  </body>
+      });
 
+      function lotsofGraphs() {
+        var data = [];
+
+        for(var x = 13; x < 26; x++) {
+          if(x == 16 || x == 17 || x == 19 || x == 21 || x == 23){
+            var value = parseFloat(output[x]);
+            data.push(value);
+          }
+        }
+      
+        var ctx = document.getElementById('myChart1');
+        var label = output[15] + ': #' + output[13] + ' RANKING: ' + output[14] ;
+
+        //Adding information to the Chart object
+        var ch = new Chart(ctx, {
+        //Defining the design of the graph
+        type: 'line',
+        data: {
+            labels: ['ESPM', 'Auto Low', 'Auto High', 'Teleop Low', 'Teleop High'],
+            datasets: [{
+                label: label,
+                data: data,
+                borderColor:'rgba(0, 0, 0, 1)',
+                backgroundColor: 'rgba(247, 247, 5, 0.2)',
+                borderWidth: 3
+            }]
+        },
+        //Used to resize the graph
+        responsive: {
+          maintainAspectRatio: false
+        },
+        options: {
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+        });
+  }
+  </script>
+</body>
+  <!-- CSS used to resize the graph-->
   <style>
     .out {
       height: 200px;

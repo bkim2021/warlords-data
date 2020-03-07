@@ -12,30 +12,36 @@
 
   <br>
   <br>
+
   <div>
     <h1 id="title">Warlords Stats</h1>
-        <h3 id="match">Presented by Team 2485</h3>
+    <h3 id="match">Presented by Team 2485</h3>
     <p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
     <p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
   </div>
-    <div class = "container1">
-      <div class = "inside">
-        <canvas id="myChart1"></canvas>
-      </div>
-      <div class = "inside">
-        <canvas id="myChart2"></canvas>
-      </div>
-      <div class = "inside">
-        <canvas id="myChart3"></canvas>
-      </div>
+
+  <div class = "container1">
+    <div class = "inside">
+      <canvas id="myChart1"></canvas>
     </div>
-    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="node_modules/chart.js/dist/Chart.js"></script>
-    <link href="style.css" type="text/css" rel="stylesheet"/>
-        <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-    <script>
+    <div class = "inside">
+      <canvas id="myChart2"></canvas>
+    </div>
+    <div class = "inside">
+      <canvas id="myChart3"></canvas>
+    </div>
+  </div>
+
+  <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="node_modules/chart.js/dist/Chart.js"></script>
+  <link href="style.css" type="text/css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
+  
+  <script>
     var output = [];
     var entry;
+
+    //Getting JSON and sending pertinent data to a JavaScript array
     $(function() {
         var sheetURL = 'https://spreadsheets.google.com/feeds/cells/1EMAV9BxUnAs-Jtvn6QsIpkik5LW6odRa8bLyxc4aMlw/1/public/full?alt=json';
         $.getJSON(sheetURL, function(data) {
@@ -47,124 +53,132 @@
             }
         })
     });
-function lotsofGraphs(){
-  var c = 13;
-  var r = 4;
-  //for(r1 = 1; r1< r+1; r1++){
-    //var data = [];
-    //for(var x = 13*r1; x<2*x; x++){
-      //var t = parseFloat(output[x]);
-      //data.push(t);
-    //}
-    //var numg = r-1;
 
-  //}
-    var data1 = [];
-    for(var x = 13; x<26; x++){
-      if(x==16||x==17||x==19||x==21||x==23){
-        var t = parseFloat(output[x]);
-        data1.push(t);
-      }
-    }
-    var data2 = [];
-    for(var x = 26; x<39; x++){
-      if(x==29||x==30||x==32||x==34||x==36){
-        var t = parseFloat(output[x]);
-        data2.push(t);
-      }
-    }
-    var data3 = [];
-    for(var x = 39; x<52; x++){
-      if(x==42||x==43||x==45||x==47||x==49){
-        var t = parseFloat(output[x]);
-        data3.push(t);
-      }
-    }
-    var ctx1 = document.getElementById('myChart1');
-    var ctx2 = document.getElementById('myChart2');
-    var ctx3 = document.getElementById('myChart3');
-    var label1 = output[15] + ': #' + output[13] + ' RANKING: ' + output[14] ;
-    var label2 = output[28] + ': #' + output[26] + ' RANKING: ' + output[27] ;
-    var label3 = output[41] + ': #' + output[39] + ' RANKING: ' + output[40] ;
-    var ch1 = new Chart(ctx1, {
-    type: 'line',
-    data: {
-        labels: ['ESPM', 'Auto Low', 'Auto High', 'Teleop Low', 'Teleop High'],
-        datasets: [{
-            label: label1,
-            data: data1,
-            borderColor:'rgba(0,0,0, 1)',
-            backgroundColor: 'rgba(247, 247, 5,0.2)',
-            borderWidth: 3
-        }]
-    },
-    responsive: {
-      maintainAspectRatio: false
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+  //Setup the graphs for the teams
+  function lotsofGraphs(){
+    var c = 13;
+    var r = 4;
+    //for(r1 = 1; r1< r+1; r1++){
+      //var data = [];
+      //for(var x = 13*r1; x<2*x; x++){
+        //var t = parseFloat(output[x]);
+        //data.push(t);
+      //}
+      //var numg = r-1;
+
+    //}
+      var data1 = [];
+      for(var x = 13; x<26; x++){
+        if(x==16||x==17||x==19||x==21||x==23){
+          var t = parseFloat(output[x]);
+          data1.push(t);
         }
-    }
-    });
-    var ch2 = new Chart(ctx2, {
-    type: 'line',
-    data: {
-        labels: ['ESPM', 'Auto Low', 'Auto High', 'Teleop Low', 'Teleop High'],
-        datasets: [{
-            label: label2,
-            data: data2,
-            borderColor:'rgba(0,0,0, 1)',
-            backgroundColor: 'rgba(247, 247, 5,0.2)',
-            borderWidth: 3
-        }]
-    },
-    responsive: {
-      maintainAspectRatio: false
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+      }
+      var data2 = [];
+      for(var x = 26; x<39; x++){
+        if(x==29||x==30||x==32||x==34||x==36){
+          var t = parseFloat(output[x]);
+          data2.push(t);
         }
-    }
-    });
-    var ch3 = new Chart(ctx3, {
-    type: 'line',
-    data: {
-        labels: ['ESPM', 'Auto Low', 'Auto High', 'Teleop Low', 'Teleop High'],
-        datasets: [{
-            label: label3,
-            data: data3,
-            borderColor:'rgba(0,0,0, 1)',
-            backgroundColor: 'rgba(247, 247, 5,0.2)',
-            borderWidth: 3
-        }]
-    },
-    responsive: {
-      maintainAspectRatio: false
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero: true
-                }
-            }]
+      }
+      var data3 = [];
+      for(var x = 39; x<52; x++){
+        if(x==42||x==43||x==45||x==47||x==49){
+          var t = parseFloat(output[x]);
+          data3.push(t);
         }
+      }
+
+      //Connecting the webpage to the JavaScript
+      var ctx1 = document.getElementById('myChart1');
+      var ctx2 = document.getElementById('myChart2');
+      var ctx3 = document.getElementById('myChart3');
+
+      var label1 = output[15] + ': #' + output[13] + ' RANKING: ' + output[14] ;
+      var label2 = output[28] + ': #' + output[26] + ' RANKING: ' + output[27] ;
+      var label3 = output[41] + ': #' + output[39] + ' RANKING: ' + output[40] ;
+
+      //Defining the values for each chart
+      var ch1 = new Chart(ctx1, {
+      type: 'line',
+      data: {
+          labels: ['ESPM', 'Auto Low', 'Auto High', 'Teleop Low', 'Teleop High'],
+          datasets: [{
+              label: label1,
+              data: data1,
+              borderColor:'rgba(0,0,0, 1)',
+              backgroundColor: 'rgba(247, 247, 5,0.2)',
+              borderWidth: 3
+          }]
+      },
+      responsive: {
+        maintainAspectRatio: false
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+      });
+      var ch2 = new Chart(ctx2, {
+      type: 'line',
+      data: {
+          labels: ['ESPM', 'Auto Low', 'Auto High', 'Teleop Low', 'Teleop High'],
+          datasets: [{
+              label: label2,
+              data: data2,
+              borderColor:'rgba(0,0,0, 1)',
+              backgroundColor: 'rgba(247, 247, 5,0.2)',
+              borderWidth: 3
+          }]
+      },
+      responsive: {
+        maintainAspectRatio: false
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+      });
+      var ch3 = new Chart(ctx3, {
+      type: 'line',
+      data: {
+          labels: ['ESPM', 'Auto Low', 'Auto High', 'Teleop Low', 'Teleop High'],
+          datasets: [{
+              label: label3,
+              data: data3,
+              borderColor:'rgba(0,0,0, 1)',
+              backgroundColor: 'rgba(247, 247, 5,0.2)',
+              borderWidth: 3
+          }]
+      },
+      responsive: {
+        maintainAspectRatio: false
+      },
+      options: {
+          scales: {
+              yAxes: [{
+                  ticks: {
+                      beginAtZero: true
+                  }
+              }]
+          }
+      }
+      });
     }
-    });
-  }
     </script>
   </body>
 
+  <!--Sizing the graphs to fit on the screen-->
   <style>
     .container1 {
       display: flex;

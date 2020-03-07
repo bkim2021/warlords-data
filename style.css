@@ -1,5 +1,10 @@
 /*
 * Author: Brett Kim
+* Purpose: Style the webpage to improve the viewing experience for users
+*/
+
+/*
+* Headers and Other Text
 */
 
 * {
@@ -25,6 +30,20 @@ h3 {
     margin: 20px 0 0 0;
 }
 
+/*
+* Links
+*/
+a, a:visited {
+    color: lightgray;
+}
+
+a:hover {
+    color: #FFD900;
+}
+
+/*
+* Tables
+*/
 table {
     table-layout: fixed;
     border-collapse: collapse;
@@ -38,24 +57,16 @@ table {
     text-align: center;
 }
 
-.score {
-    background-color: rgba(211, 211, 211, 0.342);
-}
-
-a, a:visited {
-    color: lightgray;
-}
-
-a:hover {
-    color: #FFD900;
-}
-
 th, td {
     height: 35px;
 }
 
 tr:hover {
     background: rgba(211, 211, 211, 0.342);
+}
+
+.score {
+    background-color: rgba(211, 211, 211, 0.342);
 }
 
 ul {
