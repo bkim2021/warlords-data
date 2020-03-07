@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>title</title>
   </head>
-  <<h1 id="title">Warlords Stats</h1>
+  <h1 id="title">Warlords Stats</h1>
   <h3 id="match">Presented by Team 2485</h3>
 <p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
 <p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
@@ -26,7 +26,6 @@
         $.getJSON(sheetURL, function(data) {
             entry = data.feed.entry;
             for(i = 0; i < entry.length; i++) {
-                var blaf = entry[i].content.$t;
                 output.push(entry[i].content.$t);
                 lotsofGraphs();
             }

@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <title>title</title>
   </head>
-  <h1 style="text-align: center">Graphical Representation</h1>
-  <p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
-  <p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
-  <canvas id="myChart3" width="200px" height="200px" style="padding-left: 0;padding-right: 0;margin-left: auto;margin-right: auto;display: block;"></canvas>
+  <h1 id="title">Warlords Stats</h1>
+  <h3 id="match">Presented by Team 2485</h3>
+<p style="padding: 0; margin: 0"><a href="https://team2485.github.io/">Back to scouting form</a></p>
+<p style="padding: 0 0 10 10; margin: 0 0 10 10"><a href="visualization.html">Table representation of data</a></p>
+  
   <body>
+    <div id="out">
+      <canvas id="myChart1"></canvas>
+    </div>
+
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
     <script src="node_modules/chart.js/dist/Chart.js"></script>
     <link href="style.css" type="text/css" rel="stylesheet"/>
@@ -21,29 +26,28 @@
         $.getJSON(sheetURL, function(data) {
             entry = data.feed.entry;
             for(i = 0; i < entry.length; i++) {
-                var blaf = entry[i].content.$t;
                 output.push(entry[i].content.$t);
                 lotsofGraphs();
             }
         })
     });
 function lotsofGraphs(){
-    var data3 = [];
+    var data1 = [];
     for(var x = 39; x<52; x++){
       if(x==42||x==43||x==45||x==47||x==49){
         var t = parseFloat(output[x]);
-        data3.push(t);
+        data1.push(t);
       }
     }
-    var ctx3 = document.getElementById('myChart3');
-    var label3 = output[41] + ': #' + output[39] + ' RANKING: ' + output[40] ;
-    var ch3 = new Chart(ctx3, {
+    var ctx1 = document.getElementById('myChart1');
+    var label1 = output[41] + ': #' + output[39] + ' RANKING: ' + output[40];
+    var ch1 = new Chart(ctx1, {
     type: 'line',
     data: {
         labels: ['ESPM', 'Auto Low', 'Auto High', 'Teleop Low', 'Teleop High'],
         datasets: [{
-            label: label3,
-            data: data3,
+            label: label1,
+            data: data1,
             borderColor:'rgba(0,0,0, 1)',
             backgroundColor: 'rgba(247, 247, 5,0.2)',
             borderWidth: 3
@@ -62,9 +66,16 @@ function lotsofGraphs(){
         }
     }
     });
-    document.getElementById('myChart3').style.height = '800px';
-    document.getElementById('myChart3').style.width = '800px';
+    //document.getElementById('myChart1').style.height = '400px';
+    //document.getElementById('myChart1').style.width = '400px';
   }
     </script>
   </body>
+
+  <style>
+    .out {
+      height: 200px;
+      width: 200px;
+    }
+  </style>
 </html>
